@@ -22,13 +22,14 @@ twig:
   cache: true
   debug: true
   auto_reload: true
-  autoescape: false
+  autoescape: true
 
 assets:
   css_pipeline: false
   css_minify: true
   css_rewrite: true
   js_pipeline: false
+  js_module_pipeline: false
   js_minify: true
 
 errors:
@@ -41,5 +42,4 @@ debugger:
   shutdown:
     close_connection: true
 gpm:
-  releases: stable
   verify_peer: true
