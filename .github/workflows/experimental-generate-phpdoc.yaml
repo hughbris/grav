@@ -46,7 +46,7 @@ jobs:
         #--trust-gpg-keys 8AC0BAA79732DD42
         uses: wayofdev/gh-actions/actions/phive/install@master
         with:
-          phive-home: ${{ runner.temp }}/.phive
+          # phive-home: ${{ runner.temp }}/.phive
           trust-gpg-keys: '0x033E5F8D801A2F8D'
 
       - name: Cache phpDocumentor build files
