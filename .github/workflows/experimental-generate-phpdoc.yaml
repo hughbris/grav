@@ -33,17 +33,21 @@ jobs:
           key: php-phive-${{ hashFiles('.phive/phars.xml') }}
           restore-keys: php-phive-
 
-      - name: Install PHIVE
-        uses: szepeviktor/phive@v1
-        with:
-          home: ${{ runner.temp }}/.phive
-          binPath: ${{ github.workspace }}/tools/phive
+      # - name: Install PHIVE
+      #   uses: szepeviktor/phive@v1
+      #   with:
+      #     home: ${{ runner.temp }}/.phive
+      #     binPath: ${{ github.workspace }}/tools/phive
 
       # TODO: confirm this is the correct GPG key
       # Blocker: https://github.com/phpDocumentor/phpDocumentor/issues/3694
       - name: Install phpDocumentor
-        run: ${{ github.workspace }}/tools/phive install phpDocumentor
+        # run: ${{ github.workspace }}/tools/phive install phpDocumentor
         #--trust-gpg-keys 8AC0BAA79732DD42
+        uses: wayofdev/gh-actions/actions/phive/install@master
+        with:
+          phive-home: ${{ runner.temp }}/.phive
+          trust-gpg-keys: '0x033E5F8D801A2F8D'
 
       - name: Cache phpDocumentor build files
         id: phpdocumentor-cache
