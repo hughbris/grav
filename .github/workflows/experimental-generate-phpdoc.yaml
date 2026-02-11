@@ -7,7 +7,7 @@ permissions:
   id-token: write
 
 on:
-  # workflow_dispatch: # Allow to manually deploy
+  workflow_dispatch: # Allow to manually deploy
   push:
     branches: ["phpdocs"]
 
