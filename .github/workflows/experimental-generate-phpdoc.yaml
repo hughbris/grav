@@ -41,26 +41,28 @@ jobs:
 
       # TODO: confirm this is the correct GPG key
       # Blocker: https://github.com/phpDocumentor/phpDocumentor/issues/3694
-      - name: Install phpDocumentor
-        # run: ${{ github.workspace }}/tools/phive install phpDocumentor
-        #--trust-gpg-keys 8AC0BAA79732DD42
-        uses: wayofdev/gh-actions/actions/phive/install@master
-        with:
-          # phive-home: ${{ runner.temp }}/.phive
-          trust-gpg-keys: '0x033E5F8D801A2F8D'
+      # - name: Install phpDocumentor
+      #   # run: ${{ github.workspace }}/tools/phive install phpDocumentor
+      #   #--trust-gpg-keys 8AC0BAA79732DD42
+      #   uses: wayofdev/gh-actions/actions/phive/install@master
+      #   with:
+      #     # phive-home: ${{ runner.temp }}/.phive
+      #     trust-gpg-keys: '0x033E5F8D801A2F8D'
 
-      - name: Cache phpDocumentor build files
-        id: phpdocumentor-cache
-        uses: actions/cache@v4
-        with:
-          path: phpdoc-cache
-          key: ${{ runner.os }}-phpdocumentor-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-phpdocumentor-
+      # - name: Cache phpDocumentor build files
+      #   id: phpdocumentor-cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: phpdoc-cache
+      #     key: ${{ runner.os }}-phpdocumentor-${{ github.sha }}
+      #     restore-keys: ${{ runner.os }}-phpdocumentor-
 
       # Notice: -d xdebug.mode=off is required due to a bug/workaround
       # Issue: https://github.com/phpDocumentor/phpDocumentor/issues/3642#issuecomment-1912354577
       # - name: Build with phpDocumentor
       #   run: php -d xdebug.mode=off ${{ github.workspace }}/tools/phpDocumentor run -vv -d source --target docs --cache-folder phpdoc-cache --template default
+
+      # from https://github.com/phpDocumentor/phpDocumentor/pull/3695#discussion_r1559967797
       - name: "Build"
         uses: "phpDocumentor/phpDocumentor@master"
         with:
