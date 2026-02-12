@@ -23,16 +23,6 @@ jobs:
         with:
           path: source
 
-      # Install phpDocumentator using PHIVE
-      # phpDocumentor recommends PHIVE as the preferred install strategy
-      # Source: https://github.com/phpDocumentor/phpDocumentor/blob/919d5c1ef42a3c74d050e05ce99add6efa87b5a4/README.md?plain=1#L79
-      - name: Cache PHIVE tools
-        uses: actions/cache@v4
-        with:
-          path: ${{ runner.temp }}/.phive
-          key: php-phive-${{ hashFiles('.phive/phars.xml') }}
-          restore-keys: php-phive-
-
       # from https://github.com/phpDocumentor/phpDocumentor/pull/3695#discussion_r1559967797
       - name: "Build"
         uses: "phpDocumentor/phpDocumentor@master"
