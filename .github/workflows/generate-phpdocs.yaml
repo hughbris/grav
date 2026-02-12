@@ -1,4 +1,4 @@
-name: Generate phpDoc
+name: Generate phpDocs
 
 # Allow GITHUB_TOKEN to deploy to GitHub Pages
 permissions:
